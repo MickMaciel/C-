@@ -1,6 +1,6 @@
 #include <iostream>
 #include <ostream>
-#include <pthread.h>
+//#include <pthread.h>
 
 /*
 ===========================================================================
@@ -31,7 +31,7 @@ public:
       /* por isso declarei int limit = 0 inicialmente
          enquanto o arrombado nao digitar um numero nao dá sequencia */
       std::cout << "Digite um numero maior que 0" << std::endl;
-      return inputLimit();  //R: Cara, isso tem cara de chamada recursiva, cuidado ai hem!!!
+      return inputLimit();
     }
   }
 };
@@ -40,14 +40,14 @@ public:
 ===========================================================================
 classe principal responsável por manusear o armazenamento
 e a leitura dos números primos gerados <vector>
-R
 R: Como ainda não sei usar a classe <vetor>, 
-vou implementar como tenho costume de fazer depois melhoramos isso
-R: Sempre que se le se escreve na tabela o indice é incrementado automaticamete para próxima posição
+vou implementar como tenho costume de fazer, depois melhoramos isso.
+R: Sempre que se le ou se escreve na tabela o indice é incrementado automaticamete para próxima posição.
 */
 class PrimeNumberTable {
 
 public:
+  PrimeNumberTable (unsigned long sizeTable);
   void init();
   unsigned long readTable();
   unsigned long readTable(unsigned long index);  //sobrecarga para admitir escolha aleatória do índice
@@ -55,12 +55,19 @@ public:
 
 private:
   void clearTable();
-  void indexTableInit();  
-  unsigned long table[];            //R: por via de dúvidas, usemos números grandes
+  void indexTableInit();
+  const unsigned long sizeTable;  
+  unsigned long table[sizeTable];   //R: por via de dúvidas, usemos números grandes
   unsigned long indexReadTable;     //R: por via de dúvidas, usemos tabelas grandes
-  unsigned long indexWriteTable;  
+  unsigned long indexWriteTable;
 
-};
+}; //end class PrimeNumberTable
+
+PrimeNumberTable::PrimeNumberTable (unsigned long sizeTable)  //Construtor
+  : sizeTable(sizeTable)
+{
+  init();
+}
 
 void PrimeNumberTable::init() {
 
@@ -71,8 +78,8 @@ void PrimeNumberTable::init() {
 
 unsigned long PrimeNumberTable::readTable() {
 
-  if (indexReadTable >= sizeof(table)) return 0;
-  return table[indexReadTable++];   //R: usa indexReadTable, depois incrementa
+  if (indexReadTable >= sizeTable) return 0;
+  return table[indexReadTable++];  //R: usa indexReadTable, depois incrementa
 
 }
 
@@ -85,7 +92,7 @@ unsigned long PrimeNumberTable::readTable(unsigned long index) {
 
 bool PrimeNumberTable::writeTable (unsigned long primeNumber) {
 
-  if (indexWriteTable >= sizeof(table)) return false;
+  if (indexWriteTable >= sizeTable) return false;
   table[indexWriteTable] = primeNumber;
   indexWriteTable++;
   return true;   
@@ -95,7 +102,7 @@ bool PrimeNumberTable::writeTable (unsigned long primeNumber) {
 void  PrimeNumberTable::clearTable() {
 
   unsigned long index;
-  for (index = 0; index < sizeof(table); index++) table[index] = NULL; //Limpa dado na posição atual da tabela 
+  for (index = 0; index < sizeTable; index++) table[index] = 0; //Limpa dado na posição atual da tabela 
 
 }
 
