@@ -22,16 +22,16 @@ class PrimeNumbersTable {
 
 public:
   PrimeNumbersTable (unsigned long sizeTable);
-  void init();
+  void init();    //Deve ser executado no inicio de main()!
   unsigned long readTable();
-  unsigned long readTable(unsigned long index);  //sobrecarga para admitir escolha aleatória do índice
+  unsigned long readTable(unsigned long index);   //sobrecarga para admitir escolha aleatória do índice
   bool writeTable (unsigned long primeNumber);   //responde se foi possível escrever na tabela
 
 private:
   void clearTable();
   void indexTableInit();
   const unsigned long sizeTable;
-  unsigned long table[sizeTable];   //R: por via de dúvidas, usemos números grandes
+  unsigned long *table;             //tamanho do array será determinado na instaciacao
   unsigned long indexReadTable;     //R: por via de dúvidas, usemos tabelas grandes
   unsigned long indexWriteTable;
 
