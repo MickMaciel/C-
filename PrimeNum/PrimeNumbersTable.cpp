@@ -15,8 +15,9 @@ public:
   unsigned long readTable();
   unsigned long readTable(unsigned long index); // sobrecarga para admitir
                                                 // escolha aleatória do índice
-  bool writeTable(
-      unsigned long primeNumber); // responde se foi possível escrever na tabela
+  void writeTable(
+      unsigned long primeNumber);
+  bool isItFull();
 
 private:
   void clearTable();
@@ -70,13 +71,19 @@ unsigned long PrimeNumbersTable::readTable(unsigned long index) {
 
 //--------------------------------------------------------------------------
 // Armazena um valor na tabela na posicao indexWriteTable
-bool PrimeNumbersTable::writeTable(unsigned long primeNumber) {
+void PrimeNumbersTable::writeTable(unsigned long primeNumber) {
 
   if (indexWriteTable >= sizeTable)
-    return false;
+    return;
   table[indexWriteTable] = primeNumber;
   indexWriteTable++;
   return true;
+}
+
+//--------------------------------------------------------------------------
+bool PrimeNumbersTable::isItFull() {
+
+  return (indexWriteTable >= sizeTable);
 }
 
 //--------------------------------------------------------------------------
