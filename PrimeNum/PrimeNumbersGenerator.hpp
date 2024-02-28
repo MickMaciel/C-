@@ -1,13 +1,12 @@
 //
 //  PrimeNumbersGenerator.hpp
-//  
+//
 //
 //  Created by Mick Maciel on 27/02/2024.
 //
 
 #ifndef PrimeNumbersGenerator_hpp
 #define PrimeNumbersGenerator_hpp
-
 
 /*
 ===========================================================================
@@ -16,13 +15,8 @@ tem como parametro inputLimit
 R
 */
 class PrimeNumbersGenerator {
-  // public:
+public:
+  bool isPrime(int number) const;
 };
 
-/*
- 
- 
- 
- 
- 
 #endif /* PrimeNumbersGenerator_hpp */

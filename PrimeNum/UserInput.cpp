@@ -1,12 +1,12 @@
 //
 //  UserInput.cpp
-//  
+//
 //
 //  Created by Mick Maciel on 27/02/2024.
 //
 
-#include <iostream>
 #include "UserInput.hpp"
+#include <iostream>
 
 class UserInput {
 public:
