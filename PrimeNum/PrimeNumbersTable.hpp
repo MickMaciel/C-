@@ -18,8 +18,9 @@ classe principal responsável por manusear o armazenamento
 e a leitura dos números primos gerados <vector>
 R: Como ainda não sei usar a classe <vetor>,
 vou implementar como tenho costume de fazer, depois melhoramos isso.
-R: Sempre que se le ou se escreve na tabela o indice é incrementado
-automaticamete para próxima posição.
+
+R: O próprio objeto se encarregará de escrever numa posição ainda vazia da tabela
+R: Após cada leitura, posição a ser lida é incrementada automaticamente
 */
 
 class PrimeNumbersTable {
@@ -28,17 +29,18 @@ public:
   PrimeNumbersTable(unsigned long sizeTable);
   ~PrimeNumbersTable();
   
-  void init(); // Deve ser executado no inicio de main()!
+  void init(); // Deve ser sempre executado antes da primeira utilização da instancia
+
+  void initRead();
+  void setReadPosition(unsigned long tablePosition); 
   unsigned long readTable();
-  unsigned long readTable(unsigned long index); // sobrecarga para admitir
-                                                // escolha aleatória do índice
-  void writeTable(
-      unsigned long primeNumber);
+  void writeTable(unsigned long primeNumber);
   bool isItFull();
 
 private:
   void clearTable();
-  void indexTableInit();
+  void initWrite();
+
   unsigned long sizeTable;
   unsigned long *table; // tamanho do array será determinado na instaciacao
   unsigned long indexReadTable; // R: por via de dúvidas, usemos tabelas grandes

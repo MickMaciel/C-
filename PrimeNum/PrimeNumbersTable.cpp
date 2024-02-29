@@ -7,36 +7,7 @@
 
 #include "PrimeNumbersTable.hpp"
 
-#ifndef PrimeNumbersTable_hpp
-
-class PrimeNumbersTable {
-
-public:
-  PrimeNumbersTable(unsigned long sizeTable);
-  ~PrimeNumbersTable();
-  
-  void init(); // Deve ser executado no inicio de main()!
-  unsigned long readTable();
-  unsigned long readTable(unsigned long index); // sobrecarga para admitir
-                                                // escolha aleatória do índice
-  void writeTable(
-      unsigned long primeNumber);
-  bool isItFull();
-
-private:
-  void clearTable();
-  void indexTableInit();
-  unsigned long sizeTable;
-  unsigned long *table; // tamanho do array será determinado na instaciacao
-  unsigned long indexReadTable; // R: por via de dúvidas, usemos tabelas grandes
-  unsigned long indexWriteTable;
-
-}; // end class PrimeNumberTable
-
-#endif
-
 //--------------------------------------------------------------------------
-
 PrimeNumbersTable::PrimeNumbersTable (unsigned long sizeTable) //Construtor
   : sizeTable(sizeTable)
 {
@@ -53,7 +24,9 @@ PrimeNumbersTable::~PrimeNumbersTable() {   //Destrutor
 void PrimeNumbersTable::init() {
 
   clearTable();
-  indexTableInit(); // Volta a posicao inicial da tabela
+  initRead();
+  initWrite();
+
 }
 
 //--------------------------------------------------------------------------
@@ -64,15 +37,6 @@ unsigned long PrimeNumbersTable::readTable() {
   if (indexReadTable >= sizeTable)
     return 0;
   return table[indexReadTable++]; // R: usa indexReadTable, depois incrementa
-}
-
-//--------------------------------------------------------------------------
-// Retorna o valor da tabela na posicao passada por index
-// Atribui index a indexReadTable
-unsigned long PrimeNumbersTable::readTable(unsigned long index) {
-
-  indexReadTable = index;
-  readTable();
 }
 
 //--------------------------------------------------------------------------
@@ -94,13 +58,25 @@ bool PrimeNumbersTable::isItFull() {
 //--------------------------------------------------------------------------
 void PrimeNumbersTable::clearTable() {
 
-  unsigned long index;
-  for (index = 0; index < sizeTable; index++)
-    table[index] = 0; // Limpa dado na posição atual da tabela
+    initWrite();
+    while(isItFull() == false) writeTable(0); 
+  
 }
 
 //--------------------------------------------------------------------------
-void PrimeNumbersTable::indexTableInit() {
+void PrimeNumbersTable::setReadPosition(unsigned long tablePosition) {
 
-  indexReadTable = indexWriteTable = 0;
+  indexReadTable = tablePosition;
+}
+
+//--------------------------------------------------------------------------
+void PrimeNumbersTable::initRead() {
+
+  setReadPosition(0);
+}
+
+//--------------------------------------------------------------------------
+void PrimeNumbersTable::initWrite() {
+
+  indexWriteTable = 0;
 }
