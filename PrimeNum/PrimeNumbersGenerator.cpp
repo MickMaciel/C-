@@ -6,17 +6,15 @@
 //
 
 #include "PrimeNumbersGenerator.hpp"
-#include <cstdint>
+//#include <cstdint>
 
-class PrimeNumbersGenerator {
-public:
-  bool isPrime(int number) const {
+  bool PrimeNumbersGenerator::isPrime(int number) const {
     if (number <= 1 || number % 2 == 0)
       return false;
 
     for (int i = 2; i * i <= number; ++i) {
       if (number % i == 0) {
         return false;
-      }
+     	}
     }
   };

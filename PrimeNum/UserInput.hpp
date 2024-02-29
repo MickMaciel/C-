@@ -5,6 +5,8 @@
 //  Created by Mick Maciel on 27/02/2024.
 //
 
+#include "main.hpp"
+
 #ifndef UserInput_hpp
 #define UserInput_hpp
 
@@ -16,7 +18,7 @@ M
 */
 class UserInput {
 public:
-  int inputLimit() const;
+  int inputLimit();
 };
 
 #endif /* UserInput_hpp */

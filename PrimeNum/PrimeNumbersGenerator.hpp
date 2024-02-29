@@ -4,6 +4,7 @@
 //
 //  Created by Mick Maciel on 27/02/2024.
 //
+#include "main.hpp"
 
 #ifndef PrimeNumbersGenerator_hpp
 #define PrimeNumbersGenerator_hpp

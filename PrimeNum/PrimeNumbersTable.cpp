@@ -7,10 +7,14 @@
 
 #include "PrimeNumbersTable.hpp"
 
+#ifndef PrimeNumbersTable_hpp
+
 class PrimeNumbersTable {
 
 public:
   PrimeNumbersTable(unsigned long sizeTable);
+  ~PrimeNumbersTable();
+  
   void init(); // Deve ser executado no inicio de main()!
   unsigned long readTable();
   unsigned long readTable(unsigned long index); // sobrecarga para admitir
@@ -29,12 +33,14 @@ private:
 
 }; // end class PrimeNumberTable
 
+#endif
+
 //--------------------------------------------------------------------------
 
 PrimeNumbersTable::PrimeNumbersTable (unsigned long sizeTable) //Construtor
   : sizeTable(sizeTable)
 {
-  table = new unsigned long[sizeTable], //aloca memoria para a tabela
+  table = new unsigned long[sizeTable]; //aloca memoria para a tabela
 }
 
 
@@ -77,7 +83,6 @@ void PrimeNumbersTable::writeTable(unsigned long primeNumber) {
     return;
   table[indexWriteTable] = primeNumber;
   indexWriteTable++;
-  return true;
 }
 
 //--------------------------------------------------------------------------

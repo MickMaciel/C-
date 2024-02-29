@@ -1,1 +1,6 @@
 *.DS_Store
+*.o
+*.win
+*.dev
+*.exe
+*.layout
