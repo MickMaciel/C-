@@ -23,7 +23,10 @@
 
     unsigned long numero;
     unsigned long prime;
-    bool record; 
+    bool record;
+
+    primeTable->init();
+    primeTable->writeTable(2); //Começa com o número primo 2
 
     for (numero = 3; numero <= inputLimit; numero++) {
 

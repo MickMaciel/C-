@@ -26,7 +26,6 @@ void PrimeNumbersTable::init() {
   clearTable();
   initRead();
   initWrite();
-  writeTable(2); //Começa com o número primo 2
 
 }
 
