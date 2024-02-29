@@ -32,7 +32,7 @@ public:
   void init(); // Deve ser sempre executado antes da primeira utilização da instancia
 
   void initRead();
-  void setReadPosition(unsigned long tablePosition); 
+  void setReadPosition(unsigned long readPosition); 
   unsigned long readTable();
   void writeTable(unsigned long primeNumber);
   bool isItFull();

@@ -18,6 +18,7 @@ R
 class PrimeNumbersGenerator {
 public:
   bool isPrime(int number) const;
+  void generate(PrimeNumbersTable *primeTable, uint24 inputLimit);
 };
 
 #endif /* PrimeNumbersGenerator_hpp */

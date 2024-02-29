@@ -18,3 +18,27 @@
      	}
     }
   };
+
+  void PrimeNumbersGenerator::generate(PrimeNumbersTable *primeTable, uint24 inputLimit) {
+
+    unsigned long numero;
+    unsigned long prime;
+    bool record; 
+
+    for (numero = 3; numero <= inputLimit; numero++) {
+
+      record = true;                 //enables the inclusion of a prime number in the vector        
+      primeTable->initRead();        //Returns to the first prime number in the list
+
+      while ((prime = primeTable.readTable()) != 0)   {   //Run the loop until it finds the first empty location in the vector
+        if (numero % prime == 0) {                        //checks whether the current number is divisible by any of the prime numbers already added to the vector
+          //if numero is divisible by prime, it not is prime!!!
+          record = false;                                //Prevents inclusion of the current number in the vector
+          break; //Exit the while loop   
+        }
+      }
+
+
+      if (record == true) primeTable->writeTable(numero);
+    }
+  }

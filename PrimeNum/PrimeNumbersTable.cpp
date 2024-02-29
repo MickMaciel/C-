@@ -26,6 +26,7 @@ void PrimeNumbersTable::init() {
   clearTable();
   initRead();
   initWrite();
+  writeTable(2); //Começa com o número primo 2
 
 }
 
@@ -34,25 +35,23 @@ void PrimeNumbersTable::init() {
 // Incremeta o indexReadTable para proxima posicao
 unsigned long PrimeNumbersTable::readTable() {
 
-  if (indexReadTable >= sizeTable)
-    return 0;
+  if (indexReadTable >= sizeTable) return 0;
   return table[indexReadTable++]; // R: usa indexReadTable, depois incrementa
-}
-
-//--------------------------------------------------------------------------
-// Armazena um valor na tabela na posicao indexWriteTable
-void PrimeNumbersTable::writeTable(unsigned long primeNumber) {
-
-  if (indexWriteTable >= sizeTable)
-    return;
-  table[indexWriteTable] = primeNumber;
-  indexWriteTable++;
 }
 
 //--------------------------------------------------------------------------
 bool PrimeNumbersTable::isItFull() {
 
   return (indexWriteTable >= sizeTable);
+}
+
+//--------------------------------------------------------------------------
+// Armazena um valor na tabela na posicao indexWriteTable
+void PrimeNumbersTable::writeTable(unsigned long primeNumber) {
+
+  if (isItFull == true) return;
+  table[indexWriteTable] = primeNumber;
+  indexWriteTable++;
 }
 
 //--------------------------------------------------------------------------
@@ -64,9 +63,9 @@ void PrimeNumbersTable::clearTable() {
 }
 
 //--------------------------------------------------------------------------
-void PrimeNumbersTable::setReadPosition(unsigned long tablePosition) {
+void PrimeNumbersTable::setReadPosition(unsigned long readPosition) {
 
-  indexReadTable = tablePosition;
+  indexReadTable = readPosition;
 }
 
 //--------------------------------------------------------------------------
