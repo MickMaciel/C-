@@ -18,32 +18,53 @@ classe principal responsável por manusear o armazenamento
 e a leitura dos números primos gerados <vector>
 R: Como ainda não sei usar a classe <vetor>,
 vou implementar como tenho costume de fazer, depois melhoramos isso.
-R: Sempre que se le ou se escreve na tabela o indice é incrementado
-automaticamete para próxima posição.
+R: Seguindo os princípios SOLID, quebrei a classe original PrimeNumbersTable.
+Agora os métodos foram transformados em objetos especializados em lidar com PrimeNumbersTable.
 */
-
+//-----------------------------------------------------------------------------------
 class PrimeNumbersTable {
 
 public:
   PrimeNumbersTable(unsigned long sizeTable);
   ~PrimeNumbersTable();
-  
-  void init(); // Deve ser executado no inicio de main()!
-  unsigned long readTable();
-  unsigned long readTable(unsigned long index); // sobrecarga para admitir
-                                                // escolha aleatória do índice
-  void writeTable(
-      unsigned long primeNumber);
+
+  void init(); // Deve ser sempre executado antes da primeira urilização do objeto  
   bool isItFull();
 
 private:
   void clearTable();
-  void indexTableInit();
+
   unsigned long sizeTable;
   unsigned long *table; // tamanho do array será determinado na instaciacao
-  unsigned long indexReadTable; // R: por via de dúvidas, usemos tabelas grandes
-  unsigned long indexWriteTable;
+};
 
-}; // end class PrimeNumberTable
+//-----------------------------------------------------------------------------------
+class ReadTable {
+
+public:
+
+  ReadTable(PrimeNumbersTable* Table);
+
+  void init(); // Deve ser sempre executado antes da primeira urilização do objeto
+  unsigned long readTable();
+  unsigned long readTable(unsigned long index); // sobrecarga para admitir
+                                                // escolha aleatória do índice
+private:
+  PrimeNumbersTable* Table;
+  void indexInit();
+  unsigned long indexReadTable; // R: por via de dúvidas, usemos tabelas grandes
+};
+
+//-----------------------------------------------------------------------------------
+class WriteTable {
+
+public:
+  void init(); // Deve ser sempre executado antes da primeira urilização do objeto
+  void writeTable(unsigned long primeNumber);
+
+private:
+  void indexInit();
+  unsigned long indexWriteTable; // R: por via de dúvidas, usemos tabelas grandes
+};
 
 #endif /* PrimeNumbersTable_hpp */
