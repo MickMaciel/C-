@@ -10,8 +10,6 @@
 #ifndef PrimeNumbersTable_hpp
 #define PrimeNumbersTable_hpp
 
-#include <stdio.h>
-
 /*
 ===========================================================================
 classe principal responsável por manusear o armazenamento
@@ -26,25 +24,25 @@ R: Após cada leitura, posição a ser lida é incrementada automaticamente
 class PrimeNumbersTable {
 
 public:
-  PrimeNumbersTable(unsigned long sizeTable);
+  PrimeNumbersTable(unsigned int sizeTable);
   ~PrimeNumbersTable();
   
   void init(); // Deve ser sempre executado antes da primeira utilização da instancia
 
   void initRead();
-  void setReadPosition(unsigned long readPosition); 
-  unsigned long readTable();
-  void writeTable(unsigned long primeNumber);
+  void setReadPosition(unsigned int readPosition); 
+  unsigned int readTable();
+  void writeTable(unsigned int primeNumber);
   bool isItFull();
 
 private:
   void clearTable();
   void initWrite();
 
-  unsigned long sizeTable;
-  unsigned long *table; // tamanho do array será determinado na instaciacao
-  unsigned long indexReadTable; // R: por via de dúvidas, usemos tabelas grandes
-  unsigned long indexWriteTable;
+  unsigned int sizeTable;
+  unsigned int *table; // tamanho do array será determinado na instaciacao
+  unsigned int indexReadTable; // R: por via de dúvidas, usemos tabelas grandes
+  unsigned int indexWriteTable;
 
 }; // end class PrimeNumberTable
 

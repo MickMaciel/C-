@@ -6,7 +6,6 @@
 //
 
 #include "UserInput.hpp"
-#include <iostream>
 
 int  UserInput::inputLimit() {
 		 
@@ -14,13 +13,13 @@ int  UserInput::inputLimit() {
 	std::cout << "Digite um numero maior que 2" << std::endl;
 	std::cin >> limit;
 	
-	if (limit != 0) {
+	if (limit > 2) {
 		return limit;
 	}
 	else {
 		/* por isso declarei int limit = 0 inicialmente
 		enquanto o arrombado nao digitar um numero nao dá sequencia */
-		std::cout << "Digite um numero maior que 0" << std::endl;
+		std::cout << "Digite um numero maior que 2" << std::endl;
 		return inputLimit();
 	}
 }

@@ -8,10 +8,10 @@
 #include "PrimeNumbersTable.hpp"
 
 //--------------------------------------------------------------------------
-PrimeNumbersTable::PrimeNumbersTable (unsigned long sizeTable) //Construtor
+PrimeNumbersTable::PrimeNumbersTable (unsigned int sizeTable) //Construtor
   : sizeTable(sizeTable)
 {
-  table = new unsigned long[sizeTable]; //aloca memoria para a tabela
+  table = new unsigned int[sizeTable]; //aloca memoria para a tabela
 }
 
 
@@ -32,7 +32,7 @@ void PrimeNumbersTable::init() {
 //--------------------------------------------------------------------------
 // Retorna o valor da tabela na posicao indexReadTable
 // Incremeta o indexReadTable para proxima posicao
-unsigned long PrimeNumbersTable::readTable() {
+unsigned int PrimeNumbersTable::readTable() {
 
   if (indexReadTable >= sizeTable) return 0;
   return table[indexReadTable++]; // R: usa indexReadTable, depois incrementa
@@ -46,9 +46,9 @@ bool PrimeNumbersTable::isItFull() {
 
 //--------------------------------------------------------------------------
 // Armazena um valor na tabela na posicao indexWriteTable
-void PrimeNumbersTable::writeTable(unsigned long primeNumber) {
+void PrimeNumbersTable::writeTable(unsigned int primeNumber) {
 
-  if (isItFull == true) return;
+  if (isItFull() == true) return;
   table[indexWriteTable] = primeNumber;
   indexWriteTable++;
 }
@@ -62,7 +62,7 @@ void PrimeNumbersTable::clearTable() {
 }
 
 //--------------------------------------------------------------------------
-void PrimeNumbersTable::setReadPosition(unsigned long readPosition) {
+void PrimeNumbersTable::setReadPosition(unsigned int readPosition) {
 
   indexReadTable = readPosition;
 }
