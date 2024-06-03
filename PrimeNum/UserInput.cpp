@@ -17,8 +17,6 @@ int  UserInput::inputLimit() {
 		return limit;
 	}
 	else {
-		/* por isso declarei int limit = 0 inicialmente
-		enquanto o arrombado nao digitar um numero nao dá sequencia */
 		std::cout << "Digite um numero maior que 2" << std::endl;
 		return inputLimit();
 	}
