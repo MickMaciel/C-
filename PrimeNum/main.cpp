@@ -1,5 +1,4 @@
 #include "main.hpp"
-
 #include "PrimeNumbersTable.hpp"
 #include "PrimeNumbersGenerator.hpp"
 #include "UserInput.hpp"
