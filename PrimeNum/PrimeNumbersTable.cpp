@@ -11,12 +11,12 @@
 PrimeNumbersTable::PrimeNumbersTable (unsigned int sizeTable) //Construtor
   : sizeTable(sizeTable)
 {
-  table = new unsigned int[sizeTable]; //aloca memoria para a tabela
+  table = new unsigned int[sizeTable]; 
 }
 
 
 PrimeNumbersTable::~PrimeNumbersTable() {   //Destrutor
-  delete[] table; // desaloca memoria
+  delete[] table; 
 }
 
 //--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ void PrimeNumbersTable::init() {
 unsigned int PrimeNumbersTable::readTable() {
 
   if (indexReadTable >= sizeTable) return 0;
-  return table[indexReadTable++]; // R: usa indexReadTable, depois incrementa
+  return table[indexReadTable++]; 
 }
 
 //--------------------------------------------------------------------------
