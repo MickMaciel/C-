@@ -14,7 +14,6 @@
 ===========================================================================
 classe responsavel pela interacao com o usuario
 inputLimite
-M
 */
 class UserInput {
 public:
