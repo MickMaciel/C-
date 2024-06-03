@@ -14,11 +14,6 @@
 ===========================================================================
 classe principal responsável por manusear o armazenamento
 e a leitura dos números primos gerados <vector>
-R: Como ainda não sei usar a classe <vetor>,
-vou implementar como tenho costume de fazer, depois melhoramos isso.
-
-R: O próprio objeto se encarregará de escrever numa posição ainda vazia da tabela
-R: Após cada leitura, posição a ser lida é incrementada automaticamente
 */
 
 class PrimeNumbersTable {
@@ -41,9 +36,9 @@ private:
 
   unsigned int sizeTable;
   unsigned int *table; // tamanho do array será determinado na instaciacao
-  unsigned int indexReadTable; // R: por via de dúvidas, usemos tabelas grandes
+  unsigned int indexReadTable; 
   unsigned int indexWriteTable;
 
-}; // end class PrimeNumberTable
+}; 
 
 #endif /* PrimeNumbersTable_hpp */
